@@ -22,5 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
   window.showDetails = function(data) {
     var boxData = data.getAttribute("data-box");
     console.log(boxData);
+
+
   }
 });
