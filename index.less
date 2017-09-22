@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+@box-color: #FFFFFF;
+@font: 'Montserrat', sans-serif;
+
 #title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: @font;
 }
 .container {
   width: 500px;
   height: 500px;
   border: solid thin black;
 }
+
 #reset {
   margin-top: 2em;
   padding: 1em 3em;
@@ -14,28 +18,35 @@
   border: solid thin black;
   background-color: black;
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: @font;
 }
+
 .firstRow {
   display: flex;
   width: 100%;
 }
+
 .checkBox {
-  font-family: 'Montserrat', sans-serif;
+  font-family: @font;
   float: left;
+
   width: 33.33%;
   height: 33.33%;
+
   border: solid thin black;
   box-sizing: border-box;
-  background-color: #FFFFFF;
+  background-color: @box-color;
+
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.5s;
+
+  &:hover {
+    background-color: darken(@box-color, 20%);
+  }
 }
-.checkBox:hover {
-  background-color: #cccccc;
-}
+
 .xo {
   font-size: 8em;
 }

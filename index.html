@@ -4,24 +4,25 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="index.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet/less" type="text/css" href="index.less">
 
     <title>TicTacToe</title>
   </head>
   <body>
     <h2 id="title">TicTacToe!</h2>
-    <div class='box'>
-        <div onclick="showDetails(this)" id="0" class="checkBox" data-box='0'></div>
-        <div onclick="showDetails(this)" id="1" class="checkBox" data-box='1'></div>
-        <div onclick="showDetails(this)" id="2" class="checkBox" data-box='2'></div>
-        <div onclick="showDetails(this)" id="3" class="checkBox" data-box='3'></div>
-        <div onclick="showDetails(this)" id="4" class="checkBox" data-box='4'></div>
-        <div onclick="showDetails(this)" id="5" class="checkBox" data-box='5'></div>
-        <div onclick="showDetails(this)" id="6" class="checkBox" data-box='6'></div>
-        <div onclick="showDetails(this)" id="7" class="checkBox" data-box='7'></div>
-        <div onclick="showDetails(this)" id="8" class="checkBox" data-box='8'></div>
+    <div class='container'>
+        <div onclick="showDetails(this)" class="checkBox" data-box='0'><span class='xo' id="0"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='1'><span class='xo' id="1"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='2'><span class='xo' id="2"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='3'><span class='xo' id="3"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='4'><span class='xo' id="4"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='5'><span class='xo' id="5"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='6'><span class='xo' id="6"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='7'><span class='xo' id="7"></span></div>
+        <div onclick="showDetails(this)" class="checkBox" data-box='8'><span class='xo' id="8"></span></div>
     </div>
 
-    <button onclick='reset()'>Reset</button>
+    <button id="reset" onclick='reset()'>Reset</button>
 
   </body>
 </html>
