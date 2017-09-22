@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function(){
   let XMoves = [];
   let OMoves = [];
 
+  let gameEnded = false;
+
   let playField = [
     [], [], [],
     [], [], [],
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   window.showDetails = function(data) {
     var boxData = data.getAttribute("data-box");
-    if(playField[boxData].length === 0) {
+    if(playField[boxData].length === 0 && gameEnded == false) {
 
       playField[boxData].push(boxData);
 
@@ -32,26 +34,24 @@ document.addEventListener("DOMContentLoaded", function(){
       if(turn == 'X') {
         XMoves.push(boxData);
         checkWin()
-
         turn = 'O';
       } else {
         OMoves.push(boxData);
         checkWin()
-
         turn = 'X';
       }
-      document.getElementById('title').innerHTML = `${turn}'s Turn`;
+      if(!gameEnded) {
+        document.getElementById('title').innerHTML = `${turn}'s Turn`;
+      }
     }
     console.log('X', XMoves);
     console.log('O', OMoves);
-    // console.log(playField);
   }
 
   function containsAll(winCond, playerMoves){
-    return winCond.map((winningConditions) => { //Loops through all winning conditions
+    for(var i = 0 ; i < winCond.length; i++){
       let winner = true;
-
-      winningConditions.map((winCondNum) => { //loops through all winning condition numbers
+      winCond[i].map((winCondNum) => {
         if(playerMoves.includes(winCondNum)) {
 
         } else {
@@ -60,20 +60,12 @@ document.addEventListener("DOMContentLoaded", function(){
       })
 
       if(winner) {
+        gameEnded = true;
+        document.getElementById('title').innerHTML = `${turn}'s has Won the game`;
         return console.log(`${turn} has won the game`);
-      } else {
-        return console.log(`${turn} has gone, no win`);
-
+        break;
       }
-    })
-    // for(var i = 0 ; i < winCond.length; i++){
-    // }
-
-    // if(winner) {
-    //   return console.log(`${turn} has won the game`);
-    // } else {
-    //   return console.log(`${turn} has gone, no win`);
-    // }
+    }
   }
 
   function checkWin() {
@@ -82,5 +74,25 @@ document.addEventListener("DOMContentLoaded", function(){
     } else {
       return containsAll(winConditions, OMoves);
     }
+  }
+
+  window.reset = function() {
+    console.log('reset');
+    gameEnded = false;
+    XMoves = [];
+    OMoves = [];
+
+    playField = [
+      [], [], [],
+      [], [], [],
+      [], [], []
+    ];
+
+    for(let i =0; i < 9; i++) {
+      document.getElementById(`${i}`).innerHTML = '';
+    }
+
+    document.getElementById('title').innerHTML = 'TicTacToe!';
+
   }
 });
